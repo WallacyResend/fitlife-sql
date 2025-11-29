@@ -1,91 +1,189 @@
-📘 Sistema de Gestão e Treinos – FitLife
+🏋️‍♂️ FitLife – Sistema de Gestão e Treinos
+📘 Projeto – Experiência Prática IV
+Modelagem de Banco de Dados • Universidade Cruzeiro do Sul
+📌 Sobre o Projeto
 
-Projeto da disciplina Modelagem de Banco de Dados
-Experiência Prática IV – Criação e Manipulação de Dados com SQL
+O FitLife é um sistema de gestão voltado para academias, permitindo o controle de:
 
-📌 Objetivo
+Cadastro de alunos e planos
 
-Este projeto implementa o banco de dados do sistema FitLife, incluindo:
+Professores e aulas coletivas
 
-Criação das tabelas (Modelo Físico)
+Treinos personalizados
 
-Inserção de dados reais utilizando SQL (DML)
+Exercícios
 
-Consultas utilizando SELECT, JOIN, ORDER BY, LIMIT…
+Registro de presença em aulas
 
-Atualizações com UPDATE
+Organização da estrutura operacional
 
-Remoção de dados com DELETE
+Este repositório contém a implementação da Experiência Prática IV, com foco em manipulação de dados SQL (DML) em um banco de dados projetado nas EPs anteriores.
 
-🛠️ Tecnologias utilizadas
+🧠 Competências Desenvolvidas
 
-MySQL (Workbench recomendado)
+Aplicação prática de SQL (DDL e DML)
 
-SQL (DDL + DML)
+Criação de banco de dados no MySQL
 
-Git & GitHub para versionamento
+Manipulação de dados reais com INSERT, SELECT, UPDATE e DELETE
 
-📂 Estrutura do Repositório
+Integração do modelo lógico com implementação física
+
+Uso de ferramentas de versionamento (Git & GitHub)
+
+Organização profissional de repositórios
+
+🗂 Estrutura do Repositório
 fitlife-sql/
 │
-├── create_tables.sql      # Criação do banco e tabelas
-├── insert_data.sql        # Inserção de dados
-├── queries.sql            # Consultas SELECT
-├── updates.sql            # Atualizações
-├── deletes.sql            # Exclusões
-└── README.md              # Documentação
+├── create_tables.sql      # Criação do schema e tabelas (DDL)
+├── insert_data.sql        # Inserção de dados nas entidades principais
+├── queries.sql            # Consultas SELECT com JOIN, ORDER BY, LIMIT...
+├── updates.sql            # Comandos UPDATE com condições
+├── deletes.sql            # Comandos DELETE com restrições
+└── README.md              # Documentação do projeto
 
-🧱 1. Modelo Físico (DDL)
+🛠️ Tecnologias Utilizadas
 
-Todas as tabelas do projeto foram implementadas considerando o minimundo e o modelo lógico das EP anteriores.
+MySQL 8.x
 
-Arquivo: create_tables.sql
+MySQL Workbench
 
-📝 2. Inserção de Dados (INSERT)
+Git
 
-As tabelas principais foram povoadas com dados realistas.
+GitHub
 
-Arquivo: insert_data.sql
+🧱 1. Criação do Banco de Dados (DDL)
 
-🔍 3. Consultas (SELECT)
+O arquivo create_tables.sql contém:
 
-Foram incluídas consultas com:
+Criação do banco fitlife
 
-JOIN
+Tabelas normalizadas conforme EP3:
 
-WHERE
+Plano
+
+Professor
+
+Aluno
+
+Aula
+
+Treino
+
+Exercicio
+
+Presenca
+
+Todos os relacionamentos, chaves primárias e estrangeiras foram implementados.
+
+📥 2. Povoamento do Banco (INSERT)
+
+O arquivo insert_data.sql insere dados REALISTAS para simular o ambiente da academia, incluindo:
+
+3 planos
+
+3 professores
+
+3 alunos
+
+3 aulas
+
+2 treinos
+
+3 exercícios
+
+3 presenças
+
+Isso garante que todas as consultas funcionarão corretamente.
+
+🔍 3. Consultas SQL (SELECT)
+
+O arquivo queries.sql possui consultas com:
+
+JOIN (relacionamentos aluno–plano, aula–professor etc.)
 
 ORDER BY
 
 LIMIT
 
-Filtros específicos
+Filtros e ordenações
 
-Arquivo: queries.sql
+Seleção de treinos e exercícios
 
-✏️ 4. Atualizações (UPDATE)
+Exemplos:
 
-Três comandos de alteração foram incluídos.
+SELECT a.nome AS aluno, p.nome AS plano
+FROM Aluno a
+JOIN Plano p ON a.id_plano = p.id_plano;
 
-Arquivo: updates.sql
+✏️ 4. Atualização de Dados (UPDATE)
 
-🗑️ 5. Exclusões (DELETE)
+O arquivo updates.sql possui três atualizações reais, como:
 
-Três comandos de exclusão com condições foram criados.
+Alterar objetivo do aluno
 
-Arquivo: deletes.sql
+Modificar professor responsável pela aula
 
-📦 Como executar
+Atualizar benefícios de um plano
 
-Abra o MySQL Workbench
+Exemplo:
 
-Execute o conteúdo de:
-✔ create_tables.sql
-✔ insert_data.sql
+UPDATE Aluno 
+SET objetivo = 'Ganho de força'
+WHERE id_aluno = 1;
 
-Execute os demais arquivos conforme desejar.
+🗑️ 5. Exclusão de Dados (DELETE)
 
-👨‍💻 Autor
+O arquivo deletes.sql remove registros respeitando as regras de integridade:
 
-Wallacy
-Curso: Análise e Desenvolvimento de Sistemas – Universidade Cruzeiro do Sul
+Exclusão de presenças
+
+Exclusão de exercícios
+
+Remoção de treino (sem dependentes)
+
+Exemplo:
+
+DELETE FROM Treino
+WHERE id_treino = 2;
+
+🚀 Como Executar o Projeto
+1. Abra o MySQL Workbench
+2. Execute na ordem:
+✔ Criação das tabelas:
+SOURCE create_tables.sql;
+
+✔ Inserção de dados:
+SOURCE insert_data.sql;
+
+✔ Consultas:
+
+Execute manualmente ou use:
+
+SOURCE queries.sql;
+
+✔ Atualizações:
+SOURCE updates.sql;
+
+✔ Exclusões:
+SOURCE deletes.sql;
+
+📚 Requisitos Atendidos (EP4)
+Requisito	Atendido
+Script de criação das tabelas (DDL)	✅
+Script de INSERT	✅
+2–5 consultas SELECT	✅
+3 comandos UPDATE	✅
+3 comandos DELETE	✅
+Repositório público no GitHub	✅
+README.md completo	✅
+👨‍🎓 Autor
+
+Wallacy Resende
+Curso: Análise e Desenvolvimento de Sistemas
+Universidade Cruzeiro do Sul
+
+🎯 Conclusão
+
+Este repositório apresenta a implementação completa e funcional do banco de dados FitLife, integrando modelagem, normalização e manipulação de dados conforme os objetivos da Experiência Prática IV.
